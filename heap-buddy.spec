@@ -2,7 +2,7 @@
 %include        /usr/lib/rpm/macros.mono
 #
 Summary:	A heap profiler for mono
-Summary(pl.UTF-8):   Profiler sterty dla mono
+Summary(pl.UTF-8):	Profiler sterty dla mono
 Name:		heap-buddy
 Version:	0.2
 Release:	0.1
@@ -30,7 +30,7 @@ zarządzanej pamięci, każde odśmiecanie oraz zmianę rozmiaru sterty.
 
 %package static
 Summary:	Static heap-buddy library
-Summary(pl.UTF-8):   Statyczna biblioteka heap-buddy
+Summary(pl.UTF-8):	Statyczna biblioteka heap-buddy
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
