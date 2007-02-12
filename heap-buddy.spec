@@ -2,7 +2,7 @@
 %include        /usr/lib/rpm/macros.mono
 #
 Summary:	A heap profiler for mono
-Summary(pl):	Profiler sterty dla mono
+Summary(pl.UTF-8):   Profiler sterty dla mono
 Name:		heap-buddy
 Version:	0.2
 Release:	0.1
@@ -23,21 +23,21 @@ Heap-buddy is a heap profiler for mono. It attaches to special hooks
 in the mono runtime and tracks all of the managed memory allocations,
 every garbage collection and every heap resize.
 
-%description -l pl
-Heap-buddy jest profilerem sterty dla mono. Do³±cza siê do specjalnych
-haków w ¶rodowisku uruchomieniowym mono i ¶ledzi wszystkie alokacje
-zarz±dzanej pamiêci, ka¿de od¶miecanie oraz zmianê rozmiaru sterty.
+%description -l pl.UTF-8
+Heap-buddy jest profilerem sterty dla mono. DoÅ‚Ä…cza siÄ™ do specjalnych
+hakÃ³w w Å›rodowisku uruchomieniowym mono i Å›ledzi wszystkie alokacje
+zarzÄ…dzanej pamiÄ™ci, kaÅ¼de odÅ›miecanie oraz zmianÄ™ rozmiaru sterty.
 
 %package static
 Summary:	Static heap-buddy library
-Summary(pl):	Statyczna biblioteka heap-buddy
+Summary(pl.UTF-8):   Statyczna biblioteka heap-buddy
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static heap-buddy library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka heap-buddy
 
 %prep
