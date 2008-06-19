@@ -14,9 +14,11 @@ Source0:	http://ftp.novell.com/pub/mono/sources/heap-buddy/%{name}-%{version}.ta
 URL:		http://www.mono-project.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	glib2-devel >= 1:2.0
 BuildRequires:	libtool
 BuildRequires:	mono-csharp
 BuildRequires:	pkgconfig
+Obsoletes:	heap-buddy-static
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -29,18 +31,6 @@ Heap-buddy jest profilerem sterty dla mono. Dołącza się do specjalnych
 haków w środowisku uruchomieniowym mono i śledzi wszystkie alokacje
 zarządzanej pamięci, każde odśmiecanie oraz zmianę rozmiaru sterty.
 
-%package static
-Summary:	Static heap-buddy library
-Summary(pl.UTF-8):	Statyczna biblioteka heap-buddy
-Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}-%{release}
-
-%description static
-Static heap-buddy library.
-
-%description static -l pl.UTF-8
-Statyczna biblioteka heap-buddy
-
 %prep
 %setup -q
 
@@ -50,7 +40,8 @@ Statyczna biblioteka heap-buddy
 %{__autoconf}
 %{__automake}
 
-%configure
+%configure \
+	--disable-static
 
 %{__make} -j1
 
@@ -60,6 +51,9 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} -j1 install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+# mono dlopens profiler library by libmono-profiler-NAME.so
+rm $RPM_BUILD_ROOT%{_libdir}/*.la
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -68,12 +62,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README
-%attr(755,root,root) %{_bindir}/*
+%doc AUTHORS COPYING ChangeLog NEWS README
+%attr(755,root,root) %{_bindir}/heap-buddy
+%attr(755,root,root) %{_libdir}/libmono-profiler-heap-buddy.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libmono-profiler-heap-buddy.so.0
+%attr(755,root,root) %{_libdir}/libmono-profiler-heap-buddy.so
 %{_prefix}/lib/%{name}
-%{_libdir}/*.la
-%attr(755,root,root) %{_libdir}/*.so.*.*.*
-
-%files static
-%defattr(644,root,root,755)
-%{_libdir}/*.a
