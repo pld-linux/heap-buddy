@@ -8,7 +8,8 @@ Version:	0.2
 Release:	0.1
 License:	MIT
 Group:		Development/Tools
-Source0:	http://go-mono.com/sources/heap-buddy/%{name}-%{version}.tar.gz
+# latest downloads summary at http://ftp.novell.com/pub/mono/sources-stable/
+Source0:	http://ftp.novell.com/pub/mono/sources/heap-buddy/%{name}-%{version}.tar.gz
 # Source0-md5:	619981c2596aec70eda6069489e6392b
 URL:		http://www.mono-project.org/
 BuildRequires:	autoconf
