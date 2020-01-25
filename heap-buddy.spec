@@ -1,5 +1,4 @@
 #
-%include        /usr/lib/rpm/macros.mono
 #
 Summary:	A heap profiler for mono
 Summary(pl.UTF-8):	Profiler sterty dla mono
